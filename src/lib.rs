@@ -16,7 +16,7 @@ pub async fn run() -> std::io::Result<()> {
             .route("/", web::get().to(greet))
             .route("/{name}", web::get().to(greet))
     })
-        .bind("127.0.0.1:8000")?
-        .run()
-        .await
+    .bind("127.0.0.1:8000")?
+    .run()
+    .await
 }
