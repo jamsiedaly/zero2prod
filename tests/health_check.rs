@@ -1,8 +1,8 @@
 //! tests/health_check.rs
+use sqlx::{Connection, PgConnection};
 use std::net::TcpListener;
-use zero2prod::startup::run;
 use zero2prod::configuration::get_configuration;
-use sqlx::{PgConnection, Connection};
+use zero2prod::startup::run;
 
 #[actix_rt::test]
 async fn health_check_works() {
