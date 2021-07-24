@@ -19,6 +19,7 @@ path = "src/main.rs"
 name = "zero2prod"
 
 [dependencies]
+tracing = { version = "0.1", features = ["log"] }
 actix-service = "=2.0.0-beta.5"
 actix-web = "=4.0.0-beta.5"
 config = "0.11.0"
@@ -26,11 +27,14 @@ reqwest = "0.11"
 serde = { version = "1", features = ["derive"]}
 uuid = { version = "0.8.1", features = ["v4"] }
 chrono = "0.4.15"
-env_logger = "0.8.4"
-log = "0.4.14"
+tracing-futures = "0.2.5"
+tracing-subscriber = { version = "0.2.19", features = ["registry", "env-filter"] }
+tracing-bunyan-formatter = "0.2.4"
+tracing-log = "0.1.2"
 
 [dev-dependencies]
 actix-rt = "2"
+once_cell = "1.8.0"
 tokio = { version = "1", features = ["macros"] }
 
 # Using table-like toml syntax to avoid a super-long line!
