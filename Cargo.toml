@@ -40,7 +40,7 @@ tokio = { version = "1", features = ["macros"] }
 
 # Using table-like toml syntax to avoid a super-long line!
 [dependencies.sqlx]
-version = "0.5.1"
+version = "0.5.2"
 default-features = false
 features = [
     "runtime-actix-rustls",
