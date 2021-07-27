@@ -9,6 +9,8 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgres://postgres:password@localhost:5432/newsletter
     services:
       postgres:
         image: postgres:12
@@ -29,7 +31,6 @@ jobs:
         run: |
           sudo apt-get install libpq-dev -y
           cargo install --version=0.5.2 sqlx-cli --no-default-features --features postgres
-          DATABASE_URL=postgres://postgres:password@localhost:5432/newsletter
           SKIP_DOCKER=true ./scripts/init_db.sh
       - uses: actions-rs/cargo@v1
         with:
@@ -53,6 +54,8 @@ jobs:
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgres://postgres:password@localhost:5432/newsletter
     services:
       postgres:
         image: postgres:12
@@ -77,6 +80,8 @@ jobs:
   coverage:
     name: Code coverage
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgres://postgres:password@localhost:5432/newsletter
     services:
       postgres:
         image: postgres:12
@@ -100,7 +105,6 @@ jobs:
         run: |
           sudo apt-get install libpq-dev -y
           cargo install --version=0.5.2 sqlx-cli --no-default-features --features postgres
-          DATABASE_URL=postgres://postgres:password@localhost:5432/newsletter
           SKIP_DOCKER=true ./scripts/init_db.sh
       - name: Run cargo-tarpaulin
         uses: actions-rs/tarpaulin@v0.1
