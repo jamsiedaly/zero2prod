@@ -73,10 +73,10 @@ jobs:
           override: true
           components: clippy
       - name: Migrate database
-          run: |
-            sudo apt-get install libpq-dev -y
-            cargo install --version=0.5.2 sqlx-cli --no-default-features --features postgres
-            SKIP_DOCKER=true ./scripts/init_db.sh
+        run: |
+          sudo apt-get install libpq-dev -y
+          cargo install --version=0.5.2 sqlx-cli --no-default-features --features postgres
+          SKIP_DOCKER=true ./scripts/init_db.sh
       - uses: actions-rs/clippy-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
